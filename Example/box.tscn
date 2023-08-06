@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbdl73skfbtte"]
+
+[ext_resource type="Script" path="res://Example/box.gd" id="1_jdhf4"]
+
+[node name="box" type="HBoxContainer"]
+script = ExtResource("1_jdhf4")
+
+[node name="name" type="Label" parent="."]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Coyotoime "
+text_overrun_behavior = 3
+
+[node name="val" type="Label" parent="."]
+layout_mode = 2
+text = "0"

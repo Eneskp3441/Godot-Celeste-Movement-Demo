@@ -1,0 +1,104 @@
+[gd_scene load_steps=11 format=3 uid="uid://ps4iy5ms7qkp"]
+
+[ext_resource type="Texture2D" uid="uid://dsnvkdggif8cw" path="res://Example/Assets/celestebg.png" id="1_3gt04"]
+[ext_resource type="Script" path="res://addons/PixelPerfect2D/Camera/PixelViewportDrawing.gd" id="1_tpccx"]
+[ext_resource type="PackedScene" uid="uid://cteoqg1uod6xu" path="res://Example/Scenes/Player.tscn" id="1_u27eu"]
+[ext_resource type="Script" path="res://addons/PixelPerfect2D/Camera/PixelCamera2D.gd" id="3_1245p"]
+[ext_resource type="Resource" uid="uid://c5nnkrjtu50cg" path="res://addons/PixelPerfect2D/Platformer/ExampleTemplates/Celeste.tres" id="5_0os8f"]
+[ext_resource type="Texture2D" uid="uid://cvfkhj72813d8" path="res://Example/Assets/dust.png" id="5_pxdl3"]
+
+[sub_resource type="Curve" id="Curve_65rru"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.50665, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_t2q27"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_b4s3q"]
+resource_name = "init"
+length = 7.0
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tsbo8"]
+_data = {
+"RESET": SubResource("Animation_t2q27"),
+"init": SubResource("Animation_b4s3q")
+}
+
+[node name="Game" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(320, 180)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -472.0
+offset_top = -480.0
+offset_right = 1177.0
+offset_bottom = 497.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0196078, 0.0117647, 0.0588235, 1)
+
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(160, 90)
+texture = ExtResource("1_3gt04")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(160, 92)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-152, 52, -120, 52, -120, 76, -80, 76, -80, 36, -56, 36, -56, 60, -16, 60, -16, -12, 16, -12, 16, 36, 120, 36, 120, 60, 72, 60, 72, 84, 67, 113, -96, 119, -162, 103, -164, -107, 42, -109, 120, -108, 120, -84, 120, -76, 16, -76, 16, -52, 8, -52, 8, -76, -16, -76, -16, -68, -32, -68, -32, -44, -56, -44, -56, -84, -88, -84, -88, -36, -128, -36, -128, -76, -144, -76, -144, -20, -152, -20)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(96, -92, 120, -92, 120, 36, 96, 36)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-56, -20)
+polygon = PackedVector2Array(96, -80, 120, -80, 120, 32, 96, 32)
+
+[node name="PixelViewportDrawing" type="Node2D" parent="."]
+z_index = 100
+script = ExtResource("1_tpccx")
+
+[node name="PixelPerfectCamera" type="Camera2D" parent="." node_paths=PackedStringArray("targetNode")]
+position = Vector2(101, 45)
+limit_left = 0
+limit_top = 0
+script = ExtResource("3_1245p")
+smooth = 0.0
+targetNode = NodePath("../CharacterController2D")
+
+[node name="CharacterController2D" parent="." instance=ExtResource("1_u27eu")]
+position = Vector2(160, 80)
+safe_margin = 0.001
+CharacterMovement = ExtResource("5_0os8f")
+
+[node name="Timer" type="Timer" parent="CharacterController2D"]
+autostart = true
+
+[node name="DustLanded" type="CPUParticles2D" parent="CharacterController2D"]
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("5_pxdl3")
+emission_shape = 3
+emission_rect_extents = Vector2(2, 1)
+direction = Vector2(0, -1)
+spread = 75.0
+gravity = Vector2(0, 5)
+initial_velocity_max = 15.95
+damping_min = 21.685
+damping_max = 22.505
+scale_amount_min = 0.25
+scale_amount_max = 0.65
+scale_amount_curve = SubResource("Curve_65rru")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "init"
+libraries = {
+"": SubResource("AnimationLibrary_tsbo8")
+}
+
+[connection signal="timeout" from="CharacterController2D/Timer" to="CharacterController2D" method="_on_timer_timeout"]

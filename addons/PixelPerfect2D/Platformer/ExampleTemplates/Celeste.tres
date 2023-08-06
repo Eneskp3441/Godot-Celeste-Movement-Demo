@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="PlatformerResource" load_steps=2 format=3 uid="uid://c5nnkrjtu50cg"]
+
+[ext_resource type="Script" path="res://addons/PixelPerfect2D/Platformer/PlatformerResource.gd" id="1_wu5lq"]
+
+[resource]
+script = ExtResource("1_wu5lq")
+Speed = 1.5
+Acceleration = 1.0
+Friction = 0.34
+TurnSpeed = 0.55
+Gravity = 0.18
+DownGravity = 0.8
+GravityMaximum = 6.0
+GravityScale = 1.0
+AirAcceleration = 0.21
+AirControl = 0.5
+AirBrake = 0.4
+JumpHeight = 3.0
+JumpCutoff = 2.0
+Wall_active = true
+Wall_OnlyWhenMoving = true
+Wall_Gravity = 0.1
+Wall_GravityMax = 1.75
+Wall_JumpHeight = 2.25
+Wall_JumpHeightMin = 1.5
+Wall_JumpOffset = 3.0
+Wall_JumpOffsetMin = 2.0
+Wall_JumpInputCooldown = 0.1
+Wall_SafeMargin = 3.0
+Wall_JumpBuffer = 0.05
+CoyotoTime = 0.15
+JumpBuffer = 0.1

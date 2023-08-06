@@ -1,0 +1,6 @@
+res://Example/Scenes/game.tscn
+res://addons/PixelPerfect2D/Materials/SmoothCam.gdshader
+res://Example/Assets/Celeste/Hair/Outline.gdshader
+res://addons/PixelPerfect2D/Platformer/ExampleTemplates/Celeste.tres
+res://addons/PixelPerfect2D/Scenes/game_view.tscn
+res://Example/Scenes/Player.tscn

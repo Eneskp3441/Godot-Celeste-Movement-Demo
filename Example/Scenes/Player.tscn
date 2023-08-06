@@ -1,0 +1,163 @@
+[gd_scene load_steps=30 format=3 uid="uid://cteoqg1uod6xu"]
+
+[ext_resource type="Script" path="res://Example/Player.gd" id="1_m753a"]
+[ext_resource type="Texture2D" uid="uid://bsvydcwg3x1nk" path="res://Example/Assets/Celeste/Idle/idle00.png" id="2_dqa8i"]
+[ext_resource type="Script" path="res://Example/Hair.gd" id="2_h6q4n"]
+[ext_resource type="Texture2D" uid="uid://jtkh03fgsckl" path="res://Example/Assets/Celeste/hair.png" id="2_xquvm"]
+[ext_resource type="Shader" path="res://Example/Assets/Celeste/Hair/Outline.gdshader" id="2_yahhk"]
+[ext_resource type="Texture2D" uid="uid://co2b84kuy0yu2" path="res://Example/Assets/Celeste/Idle/idle01.png" id="3_ewgft"]
+[ext_resource type="Texture2D" uid="uid://dsw628xkivagm" path="res://Example/Assets/Celeste/haipixelr.png" id="3_t2ban"]
+[ext_resource type="Texture2D" uid="uid://c66d2p54e0pqu" path="res://Example/Assets/Celeste/Idle/idle02.png" id="4_fe0hv"]
+[ext_resource type="Texture2D" uid="uid://dwirihtxnbbkm" path="res://Example/Assets/Celeste/Idle/idle03.png" id="5_ketxm"]
+[ext_resource type="Texture2D" uid="uid://68n3webvoibp" path="res://Example/Assets/Celeste/Idle/idle04.png" id="6_wqbcf"]
+[ext_resource type="Texture2D" uid="uid://crl1cg0y11pnv" path="res://Example/Assets/Celeste/Idle/idle05.png" id="7_thl3o"]
+[ext_resource type="Texture2D" uid="uid://b72d4m6wmb2ai" path="res://Example/Assets/Celeste/Idle/idle06.png" id="8_br5v8"]
+[ext_resource type="Texture2D" uid="uid://c5sdtnx3jbh8m" path="res://Example/Assets/Celeste/Idle/idle07.png" id="9_ra88n"]
+[ext_resource type="Texture2D" uid="uid://dleabpu0mqjsa" path="res://Example/Assets/Celeste/Idle/idle08.png" id="10_1bl1o"]
+[ext_resource type="Texture2D" uid="uid://uh6iwuaseqab" path="res://Example/Assets/Celeste/Walk/walk01.png" id="11_ao4do"]
+[ext_resource type="Texture2D" uid="uid://hf7s88b6f1gv" path="res://Example/Assets/Celeste/Walk/walk02.png" id="12_qyp83"]
+[ext_resource type="Texture2D" uid="uid://dqtgtpkbkoc32" path="res://Example/Assets/Celeste/Walk/walk03.png" id="13_s2nll"]
+[ext_resource type="Texture2D" uid="uid://u8t5luplreyq" path="res://Example/Assets/Celeste/Walk/walk04.png" id="14_ulnm8"]
+[ext_resource type="Texture2D" uid="uid://qrdwjvycaox1" path="res://Example/Assets/Celeste/Walk/walk05.png" id="15_sjsuv"]
+[ext_resource type="Texture2D" uid="uid://by2cacyqv4jlu" path="res://Example/Assets/Celeste/Walk/walk06.png" id="16_rk70g"]
+[ext_resource type="Texture2D" uid="uid://ciqfw5pac3s0b" path="res://Example/Assets/Celeste/Walk/walk07.png" id="17_385uv"]
+[ext_resource type="Texture2D" uid="uid://ciaawcij56ksh" path="res://Example/Assets/Celeste/Walk/walk08.png" id="18_gdx4a"]
+[ext_resource type="Texture2D" uid="uid://bs2p67y014qky" path="res://Example/Assets/Celeste/Walk/walk09.png" id="19_6x3h4"]
+[ext_resource type="Texture2D" uid="uid://c4x468ykljned" path="res://Example/Assets/Celeste/Walk/walk10.png" id="20_btwps"]
+[ext_resource type="Texture2D" uid="uid://bvljrsvi1e7ny" path="res://Example/Assets/Celeste/Walk/walk11.png" id="21_kghw1"]
+
+[sub_resource type="Curve" id="Curve_sydf5"]
+_data = [Vector2(0, 0.487544), 0.0, 0.0, 0, 0, Vector2(0.549279, 1), -0.0989701, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lmj3t"]
+shader = ExtResource("2_yahhk")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_j6xl5"]
+viewport_path = NodePath("Hair/SubViewport")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rnino"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dqa8i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ewgft")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fe0hv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ketxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wqbcf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_thl3o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_br5v8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ra88n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1bl1o")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_ao4do")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_qyp83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_s2nll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ulnm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_sjsuv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_rk70g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_385uv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_gdx4a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_6x3h4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_btwps")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_kghw1")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[node name="CharacterController2D" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_m753a")
+
+[node name="Hair" type="Node2D" parent="."]
+script = ExtResource("2_h6q4n")
+
+[node name="SubViewport" type="SubViewport" parent="Hair"]
+disable_3d = true
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(336, 196)
+
+[node name="Hair" type="Line2D" parent="Hair/SubViewport"]
+position = Vector2(24, 24)
+points = PackedVector2Array(0, 1, 11.155, 1)
+width = 6.0
+width_curve = SubResource("Curve_sydf5")
+texture = ExtResource("3_t2ban")
+texture_mode = 2
+
+[node name="hairbase" type="Sprite2D" parent="Hair/SubViewport"]
+position = Vector2(24, 24)
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("2_xquvm")
+
+[node name="Sprite2D" type="Sprite2D" parent="Hair"]
+top_level = true
+material = SubResource("ShaderMaterial_lmj3t")
+position = Vector2(158, 76)
+texture = SubResource("ViewportTexture_j6xl5")
+offset = Vector2(-16, -16)
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_rnino")
+animation = &"idle"
+frame_progress = 0.927599
+offset = Vector2(0, -8)
+
+[node name="Hair2" type="Sprite2D" parent="."]
+position = Vector2(-1, -12)
+texture = ExtResource("2_xquvm")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -7)
+polygon = PackedVector2Array(-4, -2, -3, -3, 3, -3, 4, -2, 4, 6, 3, 7, -3, 7, -4, 6)
