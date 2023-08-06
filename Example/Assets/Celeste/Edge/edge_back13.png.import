@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djlgmst1g2vhy"
-path="res://.godot/imported/smoke0.png-902e9659362be2359aac6acd83cb68f6.ctex"
+uid="uid://577oisk3ryal"
+path="res://.godot/imported/edge_back13.png-91b9ee935f275ba4f02530115b33f911.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Example/Assets/Celeste/particles/smoke0.png"
-dest_files=["res://.godot/imported/smoke0.png-902e9659362be2359aac6acd83cb68f6.ctex"]
+source_file="res://Example/Assets/Celeste/Edge/edge_back13.png"
+dest_files=["res://.godot/imported/edge_back13.png-91b9ee935f275ba4f02530115b33f911.ctex"]
 
 [params]
 

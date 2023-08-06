@@ -33,6 +33,7 @@ var deactive_input:float = 0.;
 var rightWall:bool = false;
 var leftWall:bool = false;
 var onWallSliding:bool = false;
+var onEdge:bool = false;
 
 
 var _rem_jumpbuffer:float	 = 0.;
@@ -43,13 +44,14 @@ var _control:float = 1.;
 var _grav_max:float = 1.;
 var _last_jump_type := 0;
 var _last_turned_dir:int = 1;
-@onready var physicsfps = Engine.physics_ticks_per_second;
+var physicsfps = 0
 func _ready() -> void:
 	motion_mode = CharacterBody2D.MOTION_MODE_GROUNDED;
 	onLanded.connect(_onLanded);
 
 
 func _physics_process(delta: float) -> void:
+	physicsfps = 1/delta;
 	if !onFloor && is_on_floor(): _onLanded(falledVelocity); emit_signal("onLanded", falledVelocity)
 	if onFloor && !is_on_floor(): emit_signal("onAir")
 	onFloor = is_on_floor();
@@ -57,6 +59,8 @@ func _physics_process(delta: float) -> void:
 	rightWall  = test_move(transform, Vector2(CharacterMovement.Wall_SafeMargin,0));
 	leftWall  = test_move(transform, Vector2(-CharacterMovement.Wall_SafeMargin,0));
 	onWall = rightWall || leftWall;
+	
+	onEdge = !test_move(global_transform.translated(Vector2(CharacterMovement.EdgeCheckDistance*_last_turned_dir,1)), Vector2(0,1))
 	
 	if sign(CharacterVelocity.x) != 0 && _last_turned_dir != sign(CharacterVelocity.x) && sign(CharacterVelocity.x) != sign(velocity.x):
 		_last_turned_dir = sign(CharacterVelocity.x);
@@ -89,6 +93,7 @@ func _physics_process(delta: float) -> void:
 	_HandleJump()
 	_CalculateGravity();
 	velocity = cVelocity
+	CalcCornerCorrection()
 	move_and_slide()
 	cVelocity = velocity;
 
@@ -189,3 +194,13 @@ func _onLanded(velocity_y) -> void:
 	if ( _rem_jumpbuffer > 0 ):
 		Jump();
 		_rem_jumpbuffer = 0;
+
+
+func CalcCornerCorrection() -> void:
+	var delta = get_physics_process_delta_time();
+	if velocity.y < 0 && test_move(global_transform, Vector2(0, velocity.y*delta)):
+		for i in range(1, CharacterMovement.CornerCorrectionSize+1):
+			for j in [-1., 1.]:
+				if !test_move(global_transform.translated(Vector2(i*j, 0)), Vector2(0, velocity.y * delta)):
+					translate(Vector2(i*j, 0));
+					

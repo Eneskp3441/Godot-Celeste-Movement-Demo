@@ -1,8 +1,10 @@
+CharacterControllerPlatformer
+TextureRect
+Sprite2D
 State
 StateMachine
 AnimationPlayer
 AnimationTree
-Sprite2D
 SubViewport
 Line2D
 Node2D
@@ -11,7 +13,6 @@ Polygon2D
 CPUParticles2D
 Timer
 StaticBody2D
-CharacterControllerPlatformer
 PointLight2D
 CanvasModulate
 CharacterController2D
@@ -26,7 +27,6 @@ PixelPerfectCamera
 PixelViewportDrawing
 TileMap
 Camera2D
-TextureRect
 Control
 CollisionShape2D
 AnimatedSprite2D

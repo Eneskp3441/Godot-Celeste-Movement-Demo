@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ps4iy5ms7qkp"]
+[gd_scene load_steps=10 format=3 uid="uid://ps4iy5ms7qkp"]
 
 [ext_resource type="Texture2D" uid="uid://dsnvkdggif8cw" path="res://Example/Assets/celestebg.png" id="1_3gt04"]
 [ext_resource type="Texture2D" uid="uid://bpl5usrjjqf37" path="res://Example/Assets/celestetiles.png" id="1_5xuf2"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cteoqg1uod6xu" path="res://Example/Scenes/Player.tscn" id="1_u27eu"]
 [ext_resource type="Script" path="res://addons/PixelPerfect2D/Camera/PixelCamera2D.gd" id="3_1245p"]
 [ext_resource type="Resource" uid="uid://c5nnkrjtu50cg" path="res://addons/PixelPerfect2D/Platformer/ExampleTemplates/Celeste.tres" id="5_0os8f"]
-[ext_resource type="PackedScene" uid="uid://bctquipodeb61" path="res://Utils/ParticleSystem/Templates/dust.tscn" id="6_hi438"]
 
 [sub_resource type="Animation" id="Animation_t2q27"]
 length = 0.001
@@ -71,8 +70,6 @@ CharacterMovement = ExtResource("5_0os8f")
 
 [node name="Timer" type="Timer" parent="CharacterController2D"]
 autostart = true
-
-[node name="DustLanded" parent="CharacterController2D" instance=ExtResource("6_hi438")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "init"

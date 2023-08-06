@@ -31,3 +31,5 @@ Wall_SafeMargin = 3.0
 Wall_JumpBuffer = 0.05
 CoyotoTime = 0.1
 JumpBuffer = 0.1
+EdgeCheckDistance = 8.0
+CornerCorrectionSize = 3.0

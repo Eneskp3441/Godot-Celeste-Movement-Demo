@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://cteoqg1uod6xu"]
+[gd_scene load_steps=82 format=3 uid="uid://cteoqg1uod6xu"]
 
 [ext_resource type="Script" path="res://Example/Player.gd" id="1_m753a"]
 [ext_resource type="Texture2D" uid="uid://bsvydcwg3x1nk" path="res://Example/Assets/Celeste/Idle/idle00.png" id="2_dqa8i"]
@@ -14,31 +14,45 @@
 [ext_resource type="Texture2D" uid="uid://68n3webvoibp" path="res://Example/Assets/Celeste/Idle/idle04.png" id="6_wqbcf"]
 [ext_resource type="Texture2D" uid="uid://cdx3yk0vxup3y" path="res://Example/Assets/Celeste/Fall/fall01.png" id="7_k106k"]
 [ext_resource type="Texture2D" uid="uid://crl1cg0y11pnv" path="res://Example/Assets/Celeste/Idle/idle05.png" id="7_thl3o"]
+[ext_resource type="Texture2D" uid="uid://cc2a7fxvyd7it" path="res://Example/Assets/Celeste/Edge/edge_back00.png" id="7_u2d42"]
 [ext_resource type="Texture2D" uid="uid://b72d4m6wmb2ai" path="res://Example/Assets/Celeste/Idle/idle06.png" id="8_br5v8"]
+[ext_resource type="Texture2D" uid="uid://bu6aq604a5e7j" path="res://Example/Assets/Celeste/Edge/edge_back01.png" id="8_p4c2a"]
 [ext_resource type="Texture2D" uid="uid://datjjd2m74qvv" path="res://Example/Assets/Celeste/Fall/fall02.png" id="8_ubieq"]
 [ext_resource type="Texture2D" uid="uid://c8bhcyvtevlhu" path="res://Example/Assets/Celeste/Fall/fall03.png" id="9_psfsu"]
 [ext_resource type="Texture2D" uid="uid://c5sdtnx3jbh8m" path="res://Example/Assets/Celeste/Idle/idle07.png" id="9_ra88n"]
+[ext_resource type="Texture2D" uid="uid://crw7n4kfbg78l" path="res://Example/Assets/Celeste/Edge/edge_back02.png" id="9_ykd3w"]
 [ext_resource type="Texture2D" uid="uid://dleabpu0mqjsa" path="res://Example/Assets/Celeste/Idle/idle08.png" id="10_1bl1o"]
 [ext_resource type="Texture2D" uid="uid://1a7h8rq1ivik" path="res://Example/Assets/Celeste/Fall/fall04.png" id="10_co02b"]
+[ext_resource type="Texture2D" uid="uid://bkx7h4iilwug2" path="res://Example/Assets/Celeste/Edge/edge_back03.png" id="10_gs7a0"]
+[ext_resource type="Texture2D" uid="uid://b1l2wrbl1sstp" path="res://Example/Assets/Celeste/Edge/edge_back04.png" id="11_6xglr"]
 [ext_resource type="Texture2D" uid="uid://uh6iwuaseqab" path="res://Example/Assets/Celeste/Walk/walk01.png" id="11_ao4do"]
 [ext_resource type="Texture2D" uid="uid://5uupaifdke53" path="res://Example/Assets/Celeste/Fall/fall05.png" id="11_ta1pb"]
 [ext_resource type="Texture2D" uid="uid://ddwps6msh1uh7" path="res://Example/Assets/Celeste/Fall/fall06.png" id="12_h8cj3"]
+[ext_resource type="Texture2D" uid="uid://nsldwb1b40qv" path="res://Example/Assets/Celeste/Edge/edge_back05.png" id="12_m6tyb"]
 [ext_resource type="Texture2D" uid="uid://hf7s88b6f1gv" path="res://Example/Assets/Celeste/Walk/walk02.png" id="12_qyp83"]
 [ext_resource type="Texture2D" uid="uid://bn11gt4jc6v0k" path="res://Example/Assets/Celeste/Fall/fall07.png" id="13_re3y6"]
 [ext_resource type="Texture2D" uid="uid://dqtgtpkbkoc32" path="res://Example/Assets/Celeste/Walk/walk03.png" id="13_s2nll"]
+[ext_resource type="Texture2D" uid="uid://c16cf71sgs2w2" path="res://Example/Assets/Celeste/Edge/edge_back06.png" id="13_vriml"]
 [ext_resource type="Texture2D" uid="uid://klhufo1oots1" path="res://Example/Assets/Celeste/Flip/flip00.png" id="14_glu7p"]
+[ext_resource type="Texture2D" uid="uid://c4tx3vtp75mao" path="res://Example/Assets/Celeste/Edge/edge_back07.png" id="14_ha3yt"]
 [ext_resource type="Texture2D" uid="uid://u8t5luplreyq" path="res://Example/Assets/Celeste/Walk/walk04.png" id="14_ulnm8"]
 [ext_resource type="Texture2D" uid="uid://firlbwgj3b3r" path="res://Example/Assets/Celeste/Flip/flip01.png" id="15_cu2eg"]
+[ext_resource type="Texture2D" uid="uid://buhcwqm015gev" path="res://Example/Assets/Celeste/Edge/edge_back08.png" id="15_h2ijv"]
 [ext_resource type="Texture2D" uid="uid://qrdwjvycaox1" path="res://Example/Assets/Celeste/Walk/walk05.png" id="15_sjsuv"]
+[ext_resource type="Texture2D" uid="uid://bwwuj3skggb64" path="res://Example/Assets/Celeste/Edge/edge_back09.png" id="16_jrhc6"]
 [ext_resource type="Texture2D" uid="uid://by2cacyqv4jlu" path="res://Example/Assets/Celeste/Walk/walk06.png" id="16_rk70g"]
 [ext_resource type="Texture2D" uid="uid://cbdpqq5dqdb1g" path="res://Example/Assets/Celeste/Flip/flip02.png" id="16_xdnhi"]
 [ext_resource type="Texture2D" uid="uid://ciqfw5pac3s0b" path="res://Example/Assets/Celeste/Walk/walk07.png" id="17_385uv"]
+[ext_resource type="Texture2D" uid="uid://b1skk2vo42cdu" path="res://Example/Assets/Celeste/Edge/edge_back10.png" id="17_h61u4"]
 [ext_resource type="Texture2D" uid="uid://7qonpvdbaror" path="res://Example/Assets/Celeste/Flip/flip03.png" id="17_mj616"]
+[ext_resource type="Texture2D" uid="uid://t1vxvo278kjb" path="res://Example/Assets/Celeste/Edge/edge_back11.png" id="18_crhbc"]
 [ext_resource type="Texture2D" uid="uid://ciaawcij56ksh" path="res://Example/Assets/Celeste/Walk/walk08.png" id="18_gdx4a"]
 [ext_resource type="Texture2D" uid="uid://blm5ivxrp68t8" path="res://Example/Assets/Celeste/Flip/flip04.png" id="18_roogp"]
 [ext_resource type="Texture2D" uid="uid://d1ejyn2hgwy53" path="res://Example/Assets/Celeste/Flip/flip05.png" id="19_3euqi"]
 [ext_resource type="Texture2D" uid="uid://bs2p67y014qky" path="res://Example/Assets/Celeste/Walk/walk09.png" id="19_6x3h4"]
+[ext_resource type="Texture2D" uid="uid://bejgibsr0y5ic" path="res://Example/Assets/Celeste/Edge/edge_back12.png" id="19_qk7nb"]
 [ext_resource type="Texture2D" uid="uid://c4x468ykljned" path="res://Example/Assets/Celeste/Walk/walk10.png" id="20_btwps"]
+[ext_resource type="Texture2D" uid="uid://577oisk3ryal" path="res://Example/Assets/Celeste/Edge/edge_back13.png" id="20_hsdj3"]
 [ext_resource type="Texture2D" uid="uid://c8rmh26k15a6g" path="res://Example/Assets/Celeste/Flip/flip06.png" id="20_usadh"]
 [ext_resource type="Texture2D" uid="uid://bvljrsvi1e7ny" path="res://Example/Assets/Celeste/Walk/walk11.png" id="21_kghw1"]
 [ext_resource type="Texture2D" uid="uid://oivb0lulja3s" path="res://Example/Assets/Celeste/Flip/flip07.png" id="21_wsqbm"]
@@ -79,6 +93,53 @@ animations = [{
 "loop": true,
 "name": &"climb",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_u2d42")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_p4c2a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ykd3w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gs7a0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_6xglr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_m6tyb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_vriml")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ha3yt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_h2ijv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_jrhc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_h61u4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_crhbc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_qk7nb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_hsdj3")
+}],
+"loop": true,
+"name": &"edge",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -229,35 +290,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="Animation" id="Animation_o7i2j"]
-resource_name = "idle"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Player:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Player:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
-}
-
 [sub_resource type="Animation" id="Animation_xotkg"]
 length = 0.001
 tracks/0/type = "value"
@@ -285,10 +317,9 @@ tracks/1/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_rnten"]
-resource_name = "run"
-length = 1.1
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_1uiwo"]
+resource_name = "climb"
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -299,7 +330,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"run"]
+"values": [&"climb"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -308,10 +339,10 @@ tracks/1/path = NodePath("Player:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_u8cg2"]
@@ -370,6 +401,35 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
 }
 
+[sub_resource type="Animation" id="Animation_o7i2j"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+
 [sub_resource type="Animation" id="Animation_6yi35"]
 resource_name = "jump"
 length = 0.4
@@ -398,9 +458,10 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_1uiwo"]
-resource_name = "climb"
-length = 0.1
+[sub_resource type="Animation" id="Animation_rnten"]
+resource_name = "run"
+length = 1.1
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -411,7 +472,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"climb"]
+"values": [&"run"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -420,16 +481,45 @@ tracks/1/path = NodePath("Player:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_lpfbs"]
+resource_name = "edge"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [&"edge"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i6fbd"]
 _data = {
 "RESET": SubResource("Animation_xotkg"),
 "climb": SubResource("Animation_1uiwo"),
+"edge": SubResource("Animation_lpfbs"),
 "fall": SubResource("Animation_u8cg2"),
 "flip": SubResource("Animation_ewn37"),
 "idle": SubResource("Animation_o7i2j"),
@@ -450,6 +540,7 @@ canvas_item_default_texture_filter = 0
 size = Vector2i(336, 196)
 
 [node name="Hair" type="Line2D" parent="Hair/SubViewport"]
+clip_children = 2
 position = Vector2(24, 24)
 width = 6.0
 width_curve = SubResource("Curve_sydf5")
@@ -457,11 +548,11 @@ texture = ExtResource("3_t2ban")
 texture_mode = 2
 
 [node name="hairbase" type="Sprite2D" parent="Hair/SubViewport"]
-position = Vector2(24, 22)
-scale = Vector2(1.7, 1.7)
+clip_children = 2
+position = Vector2(26, 26)
 texture = ExtResource("2_xquvm")
 
-[node name="Sprite2D" type="Sprite2D" parent="Hair"]
+[node name="ViewportHair" type="Sprite2D" parent="Hair"]
 top_level = true
 material = SubResource("ShaderMaterial_lmj3t")
 position = Vector2(158, 76)
@@ -477,8 +568,9 @@ speed_scale = 0.0
 offset = Vector2(0, -8)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+z_index = 1
 position = Vector2(0, -7)
-polygon = PackedVector2Array(-4, -2, -3, -3, 3, -3, 4, -2, 4, 6, 3, 7, -3, 7, -4, 6)
+polygon = PackedVector2Array(-2, -2, -1, -3, 2, -3, 3, -2, 3, 6, 3, 7, -2, 7, -2, 6)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

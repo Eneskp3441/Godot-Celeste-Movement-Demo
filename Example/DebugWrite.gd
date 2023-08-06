@@ -15,7 +15,7 @@ var debug = [
 	["velocity x", func(): return player.cVelocity.x*get_process_delta_time()],
 	["velocity y", func(): return player.cVelocity.y*get_process_delta_time()],
 	["input deactive", func(): return player.deactive_input],
-	["wait", func(): return player.wait],
+	["onEdge", func(): return player.onEdge],
 ]
 
 var box = preload("res://Example/box.tscn")

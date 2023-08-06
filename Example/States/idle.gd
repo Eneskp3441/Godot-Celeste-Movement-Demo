@@ -30,6 +30,8 @@ func Update(_delta:float) -> void:
 	pass
 
 func Physics_Update(_delta:float) -> void:
+	if character.onFloor && sign(round(character.velocity.x)) == 0:
+		animation_player.play("edge" if character.onEdge else "idle")
 	if character.onWallSliding:
 		onTransitioned.emit(self, "climb");
 	elif abs(character.velocity.x * _delta) > .25:
