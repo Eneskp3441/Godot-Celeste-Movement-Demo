@@ -13,7 +13,7 @@ var fakeHairCount = 0;
 func _process(delta: float) -> void:
 	var pos = get_parent().global_position;
 	var hair_offset := Vector2(1,4);
-	hairbase.global_position = pos + Vector2(18+8,19+8);
+	hairbase.global_position = pos + Vector2(18+8,18+8);
 	if ( get_parent().velocity.round() != Vector2.ZERO ):
 		fakeHairCount = Length;
 		var old_pos = hairLine.get_point_position(hairLine.get_point_count()-1)

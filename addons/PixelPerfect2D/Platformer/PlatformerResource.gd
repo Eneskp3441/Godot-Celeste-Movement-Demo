@@ -21,6 +21,8 @@ class_name PlatformerResource extends Resource
 @export var Gravity:float = .3;
 ## multiplier of the force exerted by the character on the ground
 @export var DownGravity:float = 1;
+## multiplier of the force exerted by the character on the ground
+@export var UpGravity:float = .8;
 ## Maximum the maximum force the character will exert on the ground
 @export var GravityMaximum:float = 4.75;
 # GravityScale

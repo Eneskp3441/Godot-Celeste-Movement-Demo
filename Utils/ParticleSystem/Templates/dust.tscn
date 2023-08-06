@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bctquipodeb61"]
+
+[ext_resource type="Texture2D" uid="uid://djlgmst1g2vhy" path="res://Example/Assets/Celeste/particles/smoke0.png" id="1_iqkuc"]
+[ext_resource type="Script" path="res://Utils/ParticleSystem/Templates/Dust.gd" id="2_0neon"]
+
+[sub_resource type="Curve" id="Curve_65rru"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.50665, 0.0, 0, 0]
+point_count = 2
+
+[node name="DustLanded" type="CPUParticles2D"]
+z_index = 1
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("1_iqkuc")
+emission_shape = 3
+emission_rect_extents = Vector2(2, 1)
+direction = Vector2(0, -1)
+spread = 75.0
+gravity = Vector2(0, 5)
+initial_velocity_max = 15.95
+damping_min = 21.685
+damping_max = 22.505
+scale_amount_min = 0.25
+scale_amount_max = 0.65
+scale_amount_curve = SubResource("Curve_65rru")
+script = ExtResource("2_0neon")

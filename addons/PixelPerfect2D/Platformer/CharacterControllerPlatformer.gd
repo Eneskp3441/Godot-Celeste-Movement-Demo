@@ -11,6 +11,7 @@ signal onLanded(velocity_y)
 signal onJump(is_coyoto_jump, buffered, is_wall_jump)
 signal onAir
 signal onFalling
+signal onTurned(direction)
 
 
 #################################
@@ -31,6 +32,7 @@ var wallDirection:int = 1;
 var deactive_input:float = 0.;
 var rightWall:bool = false;
 var leftWall:bool = false;
+var onWallSliding:bool = false;
 
 
 var _rem_jumpbuffer:float	 = 0.;
@@ -40,6 +42,7 @@ var _gravity_scale:float = 0.;
 var _control:float = 1.;
 var _grav_max:float = 1.;
 var _last_jump_type := 0;
+var _last_turned_dir:int = 1;
 @onready var physicsfps = Engine.physics_ticks_per_second;
 func _ready() -> void:
 	motion_mode = CharacterBody2D.MOTION_MODE_GROUNDED;
@@ -54,10 +57,15 @@ func _physics_process(delta: float) -> void:
 	rightWall  = test_move(transform, Vector2(CharacterMovement.Wall_SafeMargin,0));
 	leftWall  = test_move(transform, Vector2(-CharacterMovement.Wall_SafeMargin,0));
 	onWall = rightWall || leftWall;
+	
+	if sign(CharacterVelocity.x) != 0 && _last_turned_dir != sign(CharacterVelocity.x) && sign(CharacterVelocity.x) != sign(velocity.x):
+		_last_turned_dir = sign(CharacterVelocity.x);
+		onTurned.emit(_last_turned_dir)
+		
 	# calc wall direction
 	if onWall: wallDirection = 1 if rightWall else -1
 	var activeWallValue = ( velocity.y  > 0 && onWall && (wallDirection == sign(CharacterVelocity.x) || !CharacterMovement.Wall_OnlyWhenMoving ) ) && CharacterMovement.Wall_active;
-	
+	onWallSliding = activeWallValue
 	_gravity_scale = CharacterMovement.Wall_Gravity if activeWallValue else CharacterMovement.Gravity;	
 	var target_speed = CharacterVelocity * CharacterMovement.Speed * physicsfps;
 	if deactive_input > 0: target_speed = Vector2.ZERO;
@@ -145,7 +153,8 @@ func _CalculateGravity() -> void:
 			RealAcceleration = CharacterMovement.AirAcceleration;
 			RealFriction = CharacterMovement.AirBrake;
 			if ( jumpingPressed && jumping ):
-				_gravity_multiplier = CharacterMovement.GravityScale;
+				pass
+			_gravity_multiplier = CharacterMovement.UpGravity;
 
 		falledVelocity = 0.;
 	# Going down

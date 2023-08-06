@@ -1,3 +1,7 @@
+State
+StateMachine
+AnimationPlayer
+AnimationTree
 Sprite2D
 SubViewport
 Line2D
@@ -10,7 +14,6 @@ StaticBody2D
 CharacterControllerPlatformer
 PointLight2D
 CanvasModulate
-AnimationPlayer
 CharacterController2D
 Label
 HBoxContainer
@@ -27,4 +30,3 @@ TextureRect
 Control
 CollisionShape2D
 AnimatedSprite2D
-SubViewportContainer

@@ -1,6 +1,9 @@
 extends CharacterControllerPlatformer
 
-@onready var sprite_2d: AnimatedSprite2D = $Sprite2D
+@onready var sprite_2d: AnimatedSprite2D = $Player
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var character: CharacterControllerPlatformer = $"../.." as CharacterControllerPlatformer
+
 
 var squish:Vector2 = Vector2(1,1);
 var wait = 0
@@ -8,13 +11,11 @@ var sprite_scale:Vector2 = Vector2(1,1);
 @onready var dust_landed: CPUParticles2D = $DustLanded
 var characterDirection:int = 1;
 func _ready() -> void:
-	sprite_2d.play("idle")
-	
 #	onAir.connect(func(): print("havada"))
-#	onFalling.connect(func(): print("düşüyor"))
+#	onFalling.connect(func(): state_machine.travel("fall"))
 	onJump.connect(
 		func(coyoto, buffer, is_wall_jump): 
-			dust_landed.emitting = true;
+#			state_machine.travel("jump");
 			if is_wall_jump:
 				squish.x = .8; 
 				squish.y = 1.1
@@ -25,7 +26,6 @@ func _ready() -> void:
 	onLanded.connect(func(vel):
 		squish.x = 1.4; 
 		squish.y = .6;
-		dust_landed.emitting = true;
 	)
 
 var pos_different = Vector2();
@@ -41,9 +41,11 @@ func _physics_process(delta: float) -> void:
 	
 	# Animations
 	if ( abs(velocity.x*delta) > .25 ):
-		sprite_2d.play("run")
+#		state_machine.travel("run");
+		pass
 	else:
-		sprite_2d.play("idle")
+#		state_machine.travel("idle");
+		pass
 		
 	if Input.is_action_just_pressed("jump"):
 		Jump();
@@ -53,7 +55,7 @@ func _physics_process(delta: float) -> void:
 	wait = $Timer.time_left;
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton && event.is_pressed():
+	if event is InputEventMouseButton && event.is_pressed() && event.button_index == MOUSE_BUTTON_LEFT:
 		velocity.y = 0;
 		global_position = get_global_mouse_position()
 
