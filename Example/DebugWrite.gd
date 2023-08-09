@@ -12,10 +12,12 @@ var debug = [
 	["On wall", func(): return player.onWall],
 	["jumping", func(): return player.jumping],
 	["falled Velocity", func(): return player.falledVelocity*get_process_delta_time()],
-	["velocity x", func(): return player.cVelocity.x*get_process_delta_time()],
-	["velocity y", func(): return player.cVelocity.y*get_process_delta_time()],
-	["input deactive", func(): return player.deactive_input],
+	["velocity x", func(): return player.velocity.x*get_process_delta_time()],
+	["velocity y", func(): return player.velocity.y*get_process_delta_time()],
+	["move cooldown x", func(): return player.move_cooldown.x],
+	["move cooldown y", func(): return player.move_cooldown.y],
 	["onEdge", func(): return player.onEdge],
+	["dashIsActive", func(): return player.dashIsActive],
 ]
 
 var box = preload("res://Example/box.tscn")

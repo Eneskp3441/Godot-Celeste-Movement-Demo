@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ps4iy5ms7qkp"]
+[gd_scene load_steps=13 format=3 uid="uid://ps4iy5ms7qkp"]
 
 [ext_resource type="Texture2D" uid="uid://dsnvkdggif8cw" path="res://Example/Assets/celestebg.png" id="1_3gt04"]
 [ext_resource type="Texture2D" uid="uid://bpl5usrjjqf37" path="res://Example/Assets/celestetiles.png" id="1_5xuf2"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cteoqg1uod6xu" path="res://Example/Scenes/Player.tscn" id="1_u27eu"]
 [ext_resource type="Script" path="res://addons/PixelPerfect2D/Camera/PixelCamera2D.gd" id="3_1245p"]
 [ext_resource type="Resource" uid="uid://c5nnkrjtu50cg" path="res://addons/PixelPerfect2D/Platformer/ExampleTemplates/Celeste.tres" id="5_0os8f"]
+[ext_resource type="Script" path="res://addons/PixelPerfect2D/Camera/CameraShake.gd" id="5_8mjem"]
 
 [sub_resource type="Animation" id="Animation_t2q27"]
 length = 0.001
@@ -20,6 +21,12 @@ _data = {
 "RESET": SubResource("Animation_t2q27"),
 "init": SubResource("Animation_b4s3q")
 }
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1atgi"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nsyh3"]
+blend_mode = 1
 
 [node name="Game" type="Node2D"]
 
@@ -63,6 +70,9 @@ script = ExtResource("3_1245p")
 smooth = 0.0
 targetNode = NodePath("../CharacterController2D")
 
+[node name="CameraShakeComponent" type="Node2D" parent="PixelPerfectCamera"]
+script = ExtResource("5_8mjem")
+
 [node name="CharacterController2D" parent="." instance=ExtResource("1_u27eu")]
 position = Vector2(160, 80)
 safe_margin = 0.001
@@ -76,5 +86,57 @@ autoplay = "init"
 libraries = {
 "": SubResource("AnimationLibrary_tsbo8")
 }
+
+[node name="SnowParticleBlue" type="CPUParticles2D" parent="."]
+z_index = 2
+material = SubResource("CanvasItemMaterial_1atgi")
+position = Vector2(328, 88)
+amount = 32
+lifetime = 3.0
+preprocess = 3.0
+emission_shape = 3
+emission_rect_extents = Vector2(1, 90)
+direction = Vector2(-1, 0)
+spread = 15.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+radial_accel_min = -15.0
+radial_accel_max = 15.0
+color = Color(0.431373, 0.654902, 1, 1)
+
+[node name="SnowParticleWhite" type="CPUParticles2D" parent="."]
+z_index = 2
+material = SubResource("CanvasItemMaterial_nsyh3")
+position = Vector2(328, 88)
+amount = 32
+lifetime = 3.0
+preprocess = 3.0
+emission_shape = 3
+emission_rect_extents = Vector2(1, 90)
+direction = Vector2(-1, 0)
+spread = 15.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+radial_accel_min = -15.0
+radial_accel_max = 15.0
+
+[node name="SnowParticleGray" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_nsyh3")
+position = Vector2(328, 88)
+amount = 32
+lifetime = 5.0
+preprocess = 3.0
+emission_shape = 3
+emission_rect_extents = Vector2(1, 90)
+direction = Vector2(-1, 0)
+spread = 15.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 74.58
+radial_accel_min = -15.0
+radial_accel_max = 15.0
+color = Color(0.227451, 0.25098, 0.278431, 1)
 
 [connection signal="timeout" from="CharacterController2D/Timer" to="CharacterController2D" method="_on_timer_timeout"]

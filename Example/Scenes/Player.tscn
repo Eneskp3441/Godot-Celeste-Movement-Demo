@@ -1,8 +1,9 @@
-[gd_scene load_steps=82 format=3 uid="uid://cteoqg1uod6xu"]
+[gd_scene load_steps=89 format=3 uid="uid://cteoqg1uod6xu"]
 
 [ext_resource type="Script" path="res://Example/Player.gd" id="1_m753a"]
 [ext_resource type="Texture2D" uid="uid://bsvydcwg3x1nk" path="res://Example/Assets/Celeste/Idle/idle00.png" id="2_dqa8i"]
 [ext_resource type="Script" path="res://Example/Hair.gd" id="2_h6q4n"]
+[ext_resource type="Shader" path="res://Example/Scenes/FixMultiplyAlpha.gdshader" id="2_trfc0"]
 [ext_resource type="Texture2D" uid="uid://jtkh03fgsckl" path="res://Example/Assets/Celeste/hair.png" id="2_xquvm"]
 [ext_resource type="Shader" path="res://Example/Assets/Celeste/Hair/Outline.gdshader" id="2_yahhk"]
 [ext_resource type="Texture2D" uid="uid://co2b84kuy0yu2" path="res://Example/Assets/Celeste/Idle/idle01.png" id="3_ewgft"]
@@ -68,6 +69,13 @@
 [ext_resource type="Script" path="res://Example/States/fall.gd" id="51_b88mc"]
 [ext_resource type="Script" path="res://Example/States/flip.gd" id="52_do72b"]
 [ext_resource type="Script" path="res://Example/States/climb.gd" id="54_n4nr2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xxvm4"]
+shader = ExtResource("2_trfc0")
+shader_parameter/color = Color(0.207843, 0.564706, 0.823529, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qvg37"]
+viewport_path = NodePath("DashEffect/DashEffects")
 
 [sub_resource type="Curve" id="Curve_sydf5"]
 _data = [Vector2(0, 0.487544), 0.0, 0.0, 0, 0, Vector2(0.549279, 1), -0.0989701, 0.0, 0, 0]
@@ -290,6 +298,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6yv00"]
+size = Vector2(5, 8)
+
 [sub_resource type="Animation" id="Animation_xotkg"]
 length = 0.001
 tracks/0/type = "value"
@@ -315,6 +326,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hair/Hairpivot:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, -11)]
 }
 
 [sub_resource type="Animation" id="Animation_1uiwo"]
@@ -344,6 +367,58 @@ tracks/1/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hair/Hairpivot:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(1, -11)]
+}
+
+[sub_resource type="Animation" id="Animation_lpfbs"]
+resource_name = "edge"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"edge"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hair/Hairpivot:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.9, 1, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(2, -11), Vector2(2, -11), Vector2(1, -11), Vector2(1, -10), Vector2(0, -11), Vector2(1, -11), Vector2(2, -11), Vector2(1, -11), Vector2(2, -11), Vector2(3, -10), Vector2(3, -11)]
+}
 
 [sub_resource type="Animation" id="Animation_u8cg2"]
 resource_name = "fall"
@@ -371,6 +446,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hair/Hairpivot:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(1, -11), Vector2(1, -11)]
 }
 
 [sub_resource type="Animation" id="Animation_ewn37"]
@@ -429,6 +516,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hair/Hairpivot:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, -11), Vector2(0, -10)]
+}
 
 [sub_resource type="Animation" id="Animation_6yi35"]
 resource_name = "jump"
@@ -456,6 +555,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hair/Hairpivot:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(1, -12), Vector2(1, -11), Vector2(0, -11)]
 }
 
 [sub_resource type="Animation" id="Animation_rnten"]
@@ -486,33 +597,17 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 }
-
-[sub_resource type="Animation" id="Animation_lpfbs"]
-resource_name = "edge"
-length = 1.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Player:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hair/Hairpivot:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [&"edge"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Player:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+"values": [Vector2(1, -10), Vector2(1, -11), Vector2(1, -10), Vector2(1, -11)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i6fbd"]
@@ -527,11 +622,36 @@ _data = {
 "run": SubResource("Animation_rnten")
 }
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5k08h"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_8a0rl"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.514742, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.17268, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_oyb4y"]
+offsets = PackedFloat32Array(0, 0.558442, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.942857, 1, 1, 1, 0)
+
 [node name="CharacterController2D" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_m753a")
 
+[node name="DashEffect" type="Node2D" parent="."]
+top_level = true
+
+[node name="DashEffects" type="SubViewport" parent="DashEffect"]
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(320, 180)
+
+[node name="ShaderEffect" type="Sprite2D" parent="DashEffect"]
+material = SubResource("ShaderMaterial_xxvm4")
+position = Vector2(160, 90)
+texture = SubResource("ViewportTexture_qvg37")
+
 [node name="Hair" type="Node2D" parent="."]
 script = ExtResource("2_h6q4n")
+Length = 6
 
 [node name="SubViewport" type="SubViewport" parent="Hair"]
 disable_3d = true
@@ -541,7 +661,8 @@ size = Vector2i(336, 196)
 
 [node name="Hair" type="Line2D" parent="Hair/SubViewport"]
 clip_children = 2
-position = Vector2(24, 24)
+position = Vector2(25, 26)
+points = PackedVector2Array(0, 0, -5, 6)
 width = 6.0
 width_curve = SubResource("Curve_sydf5")
 texture = ExtResource("3_t2ban")
@@ -559,18 +680,23 @@ position = Vector2(158, 76)
 texture = SubResource("ViewportTexture_j6xl5")
 offset = Vector2(-16, -16)
 
+[node name="Hairpivot" type="Marker2D" parent="Hair"]
+position = Vector2(1, -11)
+
+[node name="remote_base" type="RemoteTransform2D" parent="Hair/Hairpivot"]
+position = Vector2(25, 37)
+remote_path = NodePath("../../SubViewport/hairbase")
+
 [node name="Player" type="AnimatedSprite2D" parent="."]
 z_index = 1
-position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_rnino")
 animation = &"idle"
 speed_scale = 0.0
-offset = Vector2(0, -8)
+offset = Vector2(0, -16)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-z_index = 1
-position = Vector2(0, -7)
-polygon = PackedVector2Array(-2, -2, -1, -3, 2, -3, 3, -2, 3, 6, 3, 7, -2, 7, -2, 6)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -4)
+shape = SubResource("RectangleShape2D_6yv00")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -598,3 +724,20 @@ script = ExtResource("52_do72b")
 
 [node name="climb" type="Node" parent="StateMachine"]
 script = ExtResource("54_n4nr2")
+
+[node name="DashParticle" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_5k08h")
+position = Vector2(0, -6)
+emitting = false
+amount = 16
+emission_shape = 3
+emission_rect_extents = Vector2(3, 3)
+spread = 15.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+scale_amount_curve = SubResource("Curve_8a0rl")
+color = Color(0.266667, 0.803922, 1, 1)
+color_ramp = SubResource("Gradient_oyb4y")
+
+[connection signal="animation_started" from="AnimationPlayer" to="Hair" method="_on_animation_player_animation_started"]

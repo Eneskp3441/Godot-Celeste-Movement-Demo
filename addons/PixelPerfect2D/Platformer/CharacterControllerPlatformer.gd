@@ -27,9 +27,7 @@ var onWall:bool = false;
 var jumpingPressed:int = 0;
 var jumping:bool = false;
 var falledVelocity:float = 0.;
-var cVelocity:Vector2 = Vector2.ZERO;
 var wallDirection:int = 1;
-var deactive_input:float = 0.;
 var rightWall:bool = false;
 var leftWall:bool = false;
 var onWallSliding:bool = false;
@@ -44,14 +42,14 @@ var _control:float = 1.;
 var _grav_max:float = 1.;
 var _last_jump_type := 0;
 var _last_turned_dir:int = 1;
-var physicsfps = 0
+var _bufferedJumpStrength:float = 0.;
 func _ready() -> void:
 	motion_mode = CharacterBody2D.MOTION_MODE_GROUNDED;
 	onLanded.connect(_onLanded);
 
 
 func _physics_process(delta: float) -> void:
-	physicsfps = 1/delta;
+	physicsfps = 1. / delta;
 	if !onFloor && is_on_floor(): _onLanded(falledVelocity); emit_signal("onLanded", falledVelocity)
 	if onFloor && !is_on_floor(): emit_signal("onAir")
 	onFloor = is_on_floor();
@@ -74,21 +72,25 @@ func _physics_process(delta: float) -> void:
 	var target_speed = CharacterVelocity * CharacterMovement.Speed * physicsfps;
 	if deactive_input > 0: target_speed = Vector2.ZERO;
 	_grav_max = CharacterMovement.Wall_GravityMax if activeWallValue else CharacterMovement.GravityMaximum
-	# Horizontal Movement
-	if ( target_speed.x != 0 ):
-		if ( cVelocity.x != 0 && sign(cVelocity.x) != sign(target_speed.x) ):
-			cVelocity.x = move_toward(cVelocity.x, 0, CharacterMovement.TurnSpeed*physicsfps*_control);
+	if move_cooldown.x <= 0:
+		# Horizontal Movement
+		if ( target_speed.x != 0 ):
+			if ( cVelocity.x != 0 && sign(cVelocity.x) != sign(target_speed.x) ):
+				cVelocity.x = move_toward(cVelocity.x, 0, CharacterMovement.TurnSpeed*physicsfps*_control);
+			else:
+				cVelocity.x = move_toward(cVelocity.x, target_speed.x, RealAcceleration*physicsfps*_control);
 		else:
-			cVelocity.x = move_toward(cVelocity.x, target_speed.x, RealAcceleration*physicsfps*_control);
-	else:
-		cVelocity.x = move_toward(cVelocity.x, 0, RealFriction*physicsfps*_control);
+			cVelocity.x = move_toward(cVelocity.x, 0, RealFriction*physicsfps*_control);
 	## APPLY GRAVITY
-	if (!onFloor):
+	if (!onFloor && move_cooldown.y <= 0):
 		cVelocity.y = move_toward(cVelocity.y, _grav_max*physicsfps, _gravity_scale*_gravity_multiplier*physicsfps);
 	
-	_rem_coyoto_time = max(_rem_coyoto_time-delta, 0);
-	_rem_jumpbuffer = max(_rem_jumpbuffer-delta, 0);
-	deactive_input = max(deactive_input-delta, 0);
+	_rem_coyoto_time = move_toward(_rem_coyoto_time, 0,delta)
+	_rem_jumpbuffer = move_toward(_rem_jumpbuffer, 0,delta)
+	deactive_input = move_toward(deactive_input, 0,delta)
+#	move_cooldown = move_cooldown.move_toward(Vector2.ZERO, delta);
+	move_cooldown.x = move_toward(move_cooldown.x, 0, delta);
+	move_cooldown.y = move_toward(move_cooldown.y, 0, delta);
 	
 	_HandleJump()
 	_CalculateGravity();
@@ -96,15 +98,18 @@ func _physics_process(delta: float) -> void:
 	CalcCornerCorrection()
 	move_and_slide()
 	cVelocity = velocity;
-
+	if is_on_floor():
+		dashRemaining = CharacterMovement.Dash_Count;
 ## Character Jump Event - you have to run it as long as the button is pressed 
 ## Usage
 ## [codeblock]
 ## if Input.is_action_just_pressed("jump"):
 ## 		Jump()
 ## [/codeblock]
+var _prev_jumped = false;
 func Jump() -> void:
-	jumpingPressed = true;
+	jumpingPressed = 1;
+	_prev_jumped = true
 	
 ## Usage
 ## [codeblock]
@@ -112,18 +117,29 @@ func Jump() -> void:
 ## 		StopJump()
 ## [/codeblock]
 func StopJump() -> void:
-	jumpingPressed = -1;
+	if _prev_jumped:
+		jumpingPressed = -1;
+		_prev_jumped = false;
 
 func _HandleJump() -> void:
+	# Relase Jump
+	if jumpingPressed < 0:
+		jumpingPressed = 0
+		
+		_bufferedJumpStrength /= CharacterMovement.JumpCutoff;
+		if !onFloor && !dashIsActive:
+				cVelocity.y /= CharacterMovement.JumpCutoff;
 	# Jump Pressed
 	if jumpingPressed > 0 || _rem_jumpbuffer > 0:
 		if onFloor || _rem_coyoto_time > 0:
+			var is_buffered:bool = _rem_jumpbuffer > 0;
 			_last_jump_type = 1;
 			_rem_coyoto_time = 0;
-			var jumpH = CharacterMovement.JumpHeight * CharacterMovement.GravityScale * physicsfps;
+			var jumpH = (CharacterMovement.JumpHeight if !is_buffered else _bufferedJumpStrength  ) * CharacterMovement.GravityScale * physicsfps;
 			cVelocity.y = -jumpH;
 			jumping = true;
-			if jumpingPressed: _rem_jumpbuffer = 0;
+			if jumpingPressed: 
+				_rem_jumpbuffer = 0;
 		else: 
 			if onWall && velocity.y > 0:
 				_last_jump_type = 2;
@@ -132,17 +148,16 @@ func _HandleJump() -> void:
 				cVelocity.y = -jumph * CharacterMovement.GravityScale * physicsfps;
 				cVelocity.x = -wallDirection * offset * physicsfps;
 				if CharacterVelocity.x != 0: deactive_input = CharacterMovement.Wall_JumpInputCooldown;
-				if jumpingPressed: _rem_jumpbuffer = CharacterMovement.Wall_JumpBuffer;
+				if jumpingPressed: 
+					_rem_jumpbuffer = CharacterMovement.Wall_JumpBuffer;
+					_bufferedJumpStrength = CharacterMovement.Wall_JumpHeight;
 			else:
-				if jumpingPressed: _rem_jumpbuffer = CharacterMovement.Wall_JumpBuffer if _last_jump_type == 2 else CharacterMovement.JumpBuffer;
+				if jumpingPressed: 
+					_rem_jumpbuffer = CharacterMovement.Wall_JumpBuffer if _last_jump_type == 2 else CharacterMovement.JumpBuffer;
+					_bufferedJumpStrength = CharacterMovement.Wall_JumpHeight if _last_jump_type == 2 else CharacterMovement.JumpHeight;
 				_last_jump_type = 0;
 		if _last_jump_type != 0: emit_signal("onJump", !onFloor && _rem_coyoto_time > 0, _rem_jumpbuffer > 0, _last_jump_type == 2)
 		jumpingPressed = 0
-	# Relase Jump
-	elif jumpingPressed < 0:
-		jumpingPressed = 0
-		if !onFloor:
-				cVelocity.y /= CharacterMovement.JumpCutoff;
 
 func _CalculateGravity() -> void:
 	# Going up
@@ -191,16 +206,22 @@ func _CalculateGravity() -> void:
 func _onLanded(velocity_y) -> void:
 	onFloor = true;
 	jumpingPressed = false;
-	if ( _rem_jumpbuffer > 0 ):
-		Jump();
-		_rem_jumpbuffer = 0;
+#	if ( _rem_jumpbuffer > 0 ):
+#		Jump();
+#		_rem_jumpbuffer = 0;
 
 
 func CalcCornerCorrection() -> void:
 	var delta = get_physics_process_delta_time();
+	# Vertical
 	if velocity.y < 0 && test_move(global_transform, Vector2(0, velocity.y*delta)):
 		for i in range(1, CharacterMovement.CornerCorrectionSize+1):
 			for j in [-1., 1.]:
 				if !test_move(global_transform.translated(Vector2(i*j, 0)), Vector2(0, velocity.y * delta)):
 					translate(Vector2(i*j, 0));
-					
+	# Horizontal
+	if abs(velocity.y) < CharacterMovement.Gravity && velocity.x != 0 && test_move(global_transform, Vector2(velocity.x*delta, 0)):
+		for i in range(1, CharacterMovement.CornerCorrectionSize+2):
+			for j in [-1., 1.]:
+				if !test_move(global_transform.translated(Vector2(0, i*j)), Vector2(velocity.x * delta, 0)):
+					translate(Vector2(0, i*j));

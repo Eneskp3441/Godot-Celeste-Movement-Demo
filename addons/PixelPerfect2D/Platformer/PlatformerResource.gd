@@ -62,6 +62,14 @@ class_name PlatformerResource extends Resource
 @export var Wall_SafeMargin:float = 2; 
 ## record the jump for the key pressed a few seconds before
 @export var Wall_JumpBuffer:float = .1; 
+@export_group("Dash", "Dash_")
+@export var Dash_Strength:float = 4;
+@export var Dash_input_cooldown:float = .14;
+@export var Dash_up_scale:float = .74;
+@export var Dash_down_scale:float = 1;
+@export var Dash_right_scale:float = 1;
+@export var Dash_left_scale:float = 1;
+@export var Dash_Count:float = 1;
 @export_group("Feel")
 ## the time allowed to jump when falling from platforms.
 @export var CoyotoTime:float = .15;

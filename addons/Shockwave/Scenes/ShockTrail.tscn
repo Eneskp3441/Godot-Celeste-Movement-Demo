@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3 uid="uid://ggc5rn8q8xbk"]
+
+[ext_resource type="Texture2D" uid="uid://bt1a60o6yq12i" path="res://addons/Shockwave/Resources/line.png" id="1_rvdtk"]
+[ext_resource type="Script" path="res://addons/Shockwave/Scripts/ShockTrail.gd" id="2_duwm1"]
+
+[sub_resource type="Curve" id="Curve_666hr"]
+max_value = 3.0
+_data = [Vector2(0.0119332, 0), 0.0, 0.0, 0, 0, Vector2(1, 2.75455), -0.282155, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_766f1"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_qlrx3"]
+colors = PackedColorArray(1, 1, 1, 0.101961, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_q2d14"]
+gradient = SubResource("Gradient_qlrx3")
+
+[sub_resource type="Curve" id="Curve_4pr12"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6ddmp"]
+curve = SubResource("Curve_4pr12")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sqwaq"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 81.78
+initial_velocity_max = 81.78
+angular_velocity_min = 438.26
+angular_velocity_max = 438.26
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.15
+scale_max = 0.47
+scale_curve = SubResource("CurveTexture_6ddmp")
+color_ramp = SubResource("GradientTexture1D_q2d14")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tk7lb"]
+atlas = ExtResource("1_rvdtk")
+region = Rect2(0, 0, 48, 48)
+
+[node name="ShockTrail" type="Line2D"]
+process_mode = 4
+points = PackedVector2Array(-7, 1, -159, -3, -371, -2, -650, -2)
+width_curve = SubResource("Curve_666hr")
+default_color = Color(1, 1, 1, 0.639216)
+gradient = SubResource("Gradient_766f1")
+texture = ExtResource("1_rvdtk")
+texture_mode = 2
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+script = ExtResource("2_duwm1")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
+show_behind_parent = true
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_sqwaq")
+texture = SubResource("AtlasTexture_tk7lb")
