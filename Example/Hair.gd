@@ -17,10 +17,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-#	var pos = hairpivot.global_position;
 	var pos = character.global_position + Vector2(0, -11);
 	var hair_offset := Vector2(0,12);
-#	hairbase.global_position = pos + basepos;
 	if ( get_parent().velocity.round() != Vector2.ZERO ):
 		fakeHairCount = Length;
 		var old_pos = hairLine.get_point_position(hairLine.get_point_count()-1)

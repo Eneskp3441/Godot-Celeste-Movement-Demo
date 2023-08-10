@@ -21,6 +21,10 @@ var dashStartPos:Vector2;
 @onready var hair: Line2D = $Hair/SubViewport/Hair
 @onready var hairbase: Sprite2D = $Hair/SubViewport/hairbase
 @onready var shockwave:ShockWave = get_tree().get_first_node_in_group("ShockWave") as ShockWave
+
+@onready var default_z:int = z_index;
+var dash_z:int = 3;
+
 var HairColors = {
 	"DEFAULT"  : Color("#ad4045"),
 	"BLUE"  : Color("#51b5ff"),
@@ -105,10 +109,11 @@ func _physics_process(delta: float) -> void:
 		squish.y = .4;
 		dashStartPos = global_position
 		dashEffectCount = 3;
-		shockwave.create(global_position, 1, 4, .1, 1, .1);
+		shockwave.create(global_position, .25, 3, 0, 1, .1);
 		OS.delay_msec(30)
 	
 	dash_particle.emitting = dashIsActive;
+	
 	if dashIsActive:
 		var mod = round(dashStartPos.distance_to(global_position));
 		if mod > 16 && dashEffectCount > 0:

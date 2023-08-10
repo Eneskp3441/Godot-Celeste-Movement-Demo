@@ -1,3 +1,4 @@
+@icon("res://Utils/EasyStateSystem/state_icon.svg")
 class_name State extends Node
 
 signal onInitialized;

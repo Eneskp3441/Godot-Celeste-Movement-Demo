@@ -1,3 +1,4 @@
+@icon("res://Utils/EasyStateSystem/machine_icon.svg")
 class_name StateMachine extends Node
 
 @export var initial_state : State;

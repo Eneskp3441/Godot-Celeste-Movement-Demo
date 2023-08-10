@@ -30,7 +30,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/PixelPerfect2D/plugin.cfg", "res://addons/Shockwave/plugin.cfg", "res://addons/debug_menu/plugin.cfg")
+enabled=PackedStringArray("res://addons/PixelPerfect2D/plugin.cfg", "res://addons/debug_menu/plugin.cfg")
 
 [input]
 

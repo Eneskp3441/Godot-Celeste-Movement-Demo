@@ -634,6 +634,7 @@ offsets = PackedFloat32Array(0, 0.558442, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.942857, 1, 1, 1, 0)
 
 [node name="CharacterController2D" type="CharacterBody2D" groups=["player"]]
+z_index = 1
 script = ExtResource("1_m753a")
 
 [node name="DashEffect" type="Node2D" parent="."]
@@ -688,13 +689,13 @@ position = Vector2(25, 37)
 remote_path = NodePath("../../SubViewport/hairbase")
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
-z_index = 1
 sprite_frames = SubResource("SpriteFrames_rnino")
 animation = &"idle"
 speed_scale = 0.0
 offset = Vector2(0, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0.5, -4)
 shape = SubResource("RectangleShape2D_6yv00")
 

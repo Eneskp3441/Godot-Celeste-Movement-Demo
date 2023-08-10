@@ -12,7 +12,7 @@ func Enter() -> void:
 		onTransitioned.emit(self, "fall");
 	);
 	
-	ParticleSystem.create(character, preload("res://Utils/ParticleSystem/Templates/dust.tscn"), character.global_position + Vector2(0, 2));
+	ParticleSystem.create(character.get_parent(), preload("res://Utils/ParticleSystem/Templates/dust.tscn"), character.global_position + Vector2(0, 0));
 
 func Exit() -> void:
 	pass

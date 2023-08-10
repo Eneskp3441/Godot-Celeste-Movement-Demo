@@ -94,7 +94,8 @@ func Dash(direction:float):
 		await get_tree().create_timer(CharacterMovement.Dash_Strength * CharacterMovement.Dash_input_cooldown).timeout;
 		dashIsActive = false;
 		onDashFinished.emit();
-
+	
+	
 
 func CanDash() -> bool:
 	return dashRemaining > 0;
