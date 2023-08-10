@@ -658,12 +658,12 @@ Length = 6
 disable_3d = true
 transparent_bg = true
 canvas_item_default_texture_filter = 0
-size = Vector2i(336, 196)
+size = Vector2i(64, 64)
 
 [node name="Hair" type="Line2D" parent="Hair/SubViewport"]
 clip_children = 2
-position = Vector2(25, 26)
-points = PackedVector2Array(0, 0, -5, 6)
+position = Vector2(32, 32)
+points = PackedVector2Array(0, 0, -10, 6)
 width = 6.0
 width_curve = SubResource("Curve_sydf5")
 texture = ExtResource("3_t2ban")
@@ -671,22 +671,20 @@ texture_mode = 2
 
 [node name="hairbase" type="Sprite2D" parent="Hair/SubViewport"]
 clip_children = 2
-position = Vector2(26, 26)
 texture = ExtResource("2_xquvm")
+offset = Vector2(32, 32)
 
 [node name="ViewportHair" type="Sprite2D" parent="Hair"]
-top_level = true
 material = SubResource("ShaderMaterial_lmj3t")
-position = Vector2(158, 76)
+position = Vector2(0, -12)
 texture = SubResource("ViewportTexture_j6xl5")
-offset = Vector2(-16, -16)
 
 [node name="Hairpivot" type="Marker2D" parent="Hair"]
 position = Vector2(1, -11)
 
 [node name="remote_base" type="RemoteTransform2D" parent="Hair/Hairpivot"]
-position = Vector2(25, 37)
 remote_path = NodePath("../../SubViewport/hairbase")
+use_global_coordinates = false
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rnino")

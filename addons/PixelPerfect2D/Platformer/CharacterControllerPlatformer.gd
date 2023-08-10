@@ -100,6 +100,9 @@ func _physics_process(delta: float) -> void:
 	cVelocity = velocity;
 	if is_on_floor():
 		dashRemaining = CharacterMovement.Dash_Count;
+	
+	motion = global_position - _old_position;
+	_old_position = global_position;
 ## Character Jump Event - you have to run it as long as the button is pressed 
 ## Usage
 ## [codeblock]

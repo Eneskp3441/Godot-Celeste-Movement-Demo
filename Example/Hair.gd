@@ -12,19 +12,28 @@ extends Node2D
 @onready var hairLine: Line2D = $SubViewport/Hair
 
 var fakeHairCount = 0;
+var hairIndex:float = 0;
 func _ready() -> void:
 	character.onTurned.connect(_UpdateAnim)
+	while hairLine.get_point_count() < Length:
+		hairLine.add_point(Vector2.ZERO);
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var pos = character.global_position + Vector2(0, -11);
-	var hair_offset := Vector2(0,12);
-	if ( get_parent().velocity.round() != Vector2.ZERO ):
+	var pos:Vector2 = (-character.motion);
+	var hair_offset := Vector2(0,0);
+#	if ( get_parent().velocity.round() != Vector2.ZERO ):
+	if true:
+		if pos.x == 0 && pos.y == 0: 
+			pos.x = .5 * -character._last_turned_dir;
+			pos.y = 2.0;
 		fakeHairCount = Length;
-		var old_pos = hairLine.get_point_position(hairLine.get_point_count()-1)
-		var prev_pos_diff = old_pos - pos
-		hairLine.add_point(old_pos - prev_pos_diff + hair_offset);
-		while hairLine.get_point_count() > Length: hairLine.remove_point(0);
+		var progress:float = float(hairIndex) / Length;
+		print(progress * Length * pos, " progress: ", progress, " Index: ", hairIndex )
+		hairIndex += 1;
+		var _r = hairLine.get_point_position((Length-1)-hairIndex);
+		hairLine.set_point_position((Length-1)-hairIndex, _r.lerp(progress * Length * pos * 2.0, 60 * delta));
+		hairIndex = fmod(hairIndex, Length-1);
 		update_points()
 	else:
 		if fakeHairCount > 0:

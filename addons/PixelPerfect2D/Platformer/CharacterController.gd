@@ -27,6 +27,9 @@ var deactive_input:float = 0.;
 var move_cooldown:Vector2 = Vector2(0.,0.);
 var dashIsActive:bool = false;
 var dashRemaining:int = 0;
+var motion:= Vector2.ZERO;
+
+var _old_position := Vector2.ZERO;
 #################################
 #||                            ||
 #||          Signals           ||
@@ -68,15 +71,16 @@ func _physics_process(delta: float) -> void:
 	
 	velocity = cVelocity;
 	move_and_slide()
+	
 	cVelocity = velocity;
 	if is_on_floor():
 		dashRemaining = CharacterMovement.Dash_Count;
 		
 	deactive_input = move_toward(deactive_input, 0,delta)
-#	move_cooldown = move_cooldown.move_toward(Vector2.ZERO, delta);
 	move_cooldown.x = move_toward(move_cooldown.x, 0, delta);
 	move_cooldown.y = move_toward(move_cooldown.y, 0, delta);
-	
+	motion = global_position - _old_position;
+	_old_position = global_position;
 func Dash(direction:float):
 		dashRemaining -= 1;
 		var multiplier:Vector2 = Vector2.ONE;
@@ -94,8 +98,6 @@ func Dash(direction:float):
 		await get_tree().create_timer(CharacterMovement.Dash_Strength * CharacterMovement.Dash_input_cooldown).timeout;
 		dashIsActive = false;
 		onDashFinished.emit();
-	
-	
 
 func CanDash() -> bool:
 	return dashRemaining > 0;

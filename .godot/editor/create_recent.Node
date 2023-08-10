@@ -1,3 +1,4 @@
+CanvasGroup
 Control
 Node2D
 RichTextLabel
@@ -7,7 +8,6 @@ CollisionPolygon2D
 ShockWaveTrail
 Sprite2D
 CPUParticles2D
-CanvasGroup
 AnimatedSprite2D
 SubViewport
 CollisionShape2D

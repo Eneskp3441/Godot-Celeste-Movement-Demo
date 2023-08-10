@@ -8,3 +8,8 @@ res://Utils/Shockwave/ShockWave.gdshader
 res://Utils/Shockwave/Resources/ShockWave.gdshader
 res://addons/PixelPerfect2D/Scenes/game_view.tscn
 res://Example/Scenes/game.tscn
+res://Example/Player.gd
+res://addons/PixelPerfect2D/Platformer/CharacterController.gd
+res://addons/PixelPerfect2D/Platformer/CharacterControllerPlatformer.gd
+res://Example/Hair.gd
+res://Utils/SceneManager/SceneManager.gd

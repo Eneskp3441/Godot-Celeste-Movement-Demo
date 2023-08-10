@@ -40,11 +40,10 @@ var hairTargetColor:Color = hairColor;
 
 func _ready() -> void:
 	Engine.time_scale = 1
-#	onAir.connect(func(): print("havada"))
-#	onFalling.connect(func(): state_machine.travel("fall"))
+#	onAir.connect(func(): print("On Air"))
+#	onFalling.connect(func(): state_machine.travel("falling"))
 	onJump.connect(
 		func(coyoto, buffer, is_wall_jump): 
-#			state_machine.travel("jump");
 			if is_wall_jump:
 				squish.x = .8; 
 				squish.y = 1.1

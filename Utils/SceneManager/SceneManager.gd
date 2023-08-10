@@ -19,9 +19,7 @@ static func change(scene_path:String):
 	pass
 
 func check(node:Node=null) -> void:
-	print("Tr node: ", TransitionNode, " deleted node: ", node)
 	if TransitionNode == node:
-		print("null")
 		TransitionNode = null;
 	var _tr = find_child("Transition");
 	if _tr != null:
