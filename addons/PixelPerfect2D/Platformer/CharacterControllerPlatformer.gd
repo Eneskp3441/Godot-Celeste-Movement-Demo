@@ -88,7 +88,6 @@ func _physics_process(delta: float) -> void:
 	_rem_coyoto_time = move_toward(_rem_coyoto_time, 0,delta)
 	_rem_jumpbuffer = move_toward(_rem_jumpbuffer, 0,delta)
 	deactive_input = move_toward(deactive_input, 0,delta)
-#	move_cooldown = move_cooldown.move_toward(Vector2.ZERO, delta);
 	move_cooldown.x = move_toward(move_cooldown.x, 0, delta);
 	move_cooldown.y = move_toward(move_cooldown.y, 0, delta);
 	
@@ -209,9 +208,6 @@ func _CalculateGravity() -> void:
 func _onLanded(velocity_y) -> void:
 	onFloor = true;
 	jumpingPressed = false;
-#	if ( _rem_jumpbuffer > 0 ):
-#		Jump();
-#		_rem_jumpbuffer = 0;
 
 
 func CalcCornerCorrection() -> void:
@@ -222,9 +218,11 @@ func CalcCornerCorrection() -> void:
 			for j in [-1., 1.]:
 				if !test_move(global_transform.translated(Vector2(i*j, 0)), Vector2(0, velocity.y * delta)):
 					translate(Vector2(i*j, 0));
+					return;
 	# Horizontal
 	if abs(velocity.y) < CharacterMovement.Gravity && velocity.x != 0 && test_move(global_transform, Vector2(velocity.x*delta, 0)):
 		for i in range(1, CharacterMovement.CornerCorrectionSize+2):
 			for j in [-1., 1.]:
 				if !test_move(global_transform.translated(Vector2(0, i*j)), Vector2(velocity.x * delta, 0)):
 					translate(Vector2(0, i*j));
+					return;

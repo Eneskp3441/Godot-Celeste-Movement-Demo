@@ -1,0 +1,106 @@
+[gd_scene load_steps=10 format=3 uid="uid://ps4iy5ms7qkp"]
+
+[ext_resource type="Texture2D" uid="uid://bpl5usrjjqf37" path="res://CelesteExample/Assets/celestetiles.png" id="1_ad5qr"]
+[ext_resource type="Texture2D" uid="uid://dsnvkdggif8cw" path="res://CelesteExample/Assets/celestebg.png" id="2_g8kpi"]
+[ext_resource type="Script" path="res://addons/PixelPerfect2D/Camera/PixelViewportDrawing.gd" id="3_5i3rl"]
+[ext_resource type="Script" path="res://addons/PixelPerfect2D/Camera/PixelCamera2D.gd" id="4_v8qgj"]
+[ext_resource type="Script" path="res://addons/PixelPerfect2D/Camera/CameraShake.gd" id="5_x74ec"]
+[ext_resource type="PackedScene" uid="uid://cteoqg1uod6xu" path="res://CelesteExample/Scenes/Player.tscn" id="6_7vw6x"]
+[ext_resource type="Resource" uid="uid://c5nnkrjtu50cg" path="res://addons/PixelPerfect2D/Platformer/ExampleTemplates/Celeste.tres" id="7_wowt7"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1atgi"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nsyh3"]
+blend_mode = 1
+
+[node name="Game" type="Node2D"]
+
+[node name="CelesteBackgrounds" type="Sprite2D" parent="."]
+position = Vector2(160, 90)
+texture = ExtResource("1_ad5qr")
+
+[node name="CelesteTiles" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(160, 90)
+texture = ExtResource("2_g8kpi")
+
+[node name="TileStaticCollision" type="StaticBody2D" parent="."]
+position = Vector2(160, 92)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TileStaticCollision"]
+polygon = PackedVector2Array(-152, 52, -120, 52, -120, 76, -80, 76, -80, 36, -56, 36, -56, 60, -16, 60, -16, -12, 16, -12, 16, 36, 48, 36, 48, 68, 72, 68, 72, 92, 152, 92, 152, 100, -168, 100, -168, -108, 168, -108, 168, 92, 152, 92, 152, 60, 144, 60, 144, 52, 136, 52, 136, 36, 128, 36, 128, 4, 112, 4, 112, -12, 88, -12, 88, -36, 120, -36, 120, -52, 112, -52, 112, -60, 120, -60, 120, -76, 128, -76, 128, -92, 88, -92, 88, -84, 16, -84, 16, -60, 8, -60, 8, -76, -16, -76, -16, -68, -32, -68, -32, -44, -56, -44, -56, -84, -88, -84, -88, -36, -128, -36, -128, -76, -144, -76, -144, -20, -152, -20)
+
+[node name="PixelViewportDrawing" type="Node2D" parent="."]
+z_index = 100
+script = ExtResource("3_5i3rl")
+
+[node name="PixelPerfectCamera" type="Camera2D" parent="." node_paths=PackedStringArray("targetNode")]
+position = Vector2(101, 45)
+limit_left = 0
+limit_top = 0
+script = ExtResource("4_v8qgj")
+smooth = 0.0
+targetNode = NodePath("../CharacterController2D")
+
+[node name="CameraShakeComponent" type="Node2D" parent="PixelPerfectCamera"]
+script = ExtResource("5_x74ec")
+
+[node name="CharacterController2D" parent="." instance=ExtResource("6_7vw6x")]
+position = Vector2(160, 72)
+safe_margin = 0.001
+CharacterMovement = ExtResource("7_wowt7")
+
+[node name="Particles" type="Node2D" parent="."]
+
+[node name="SnowParticleBlue" type="CPUParticles2D" parent="Particles"]
+z_index = 2
+material = SubResource("CanvasItemMaterial_1atgi")
+position = Vector2(328, 88)
+amount = 32
+lifetime = 3.0
+preprocess = 3.0
+emission_shape = 3
+emission_rect_extents = Vector2(1, 90)
+direction = Vector2(-1, 0)
+spread = 15.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+radial_accel_min = -15.0
+radial_accel_max = 15.0
+color = Color(0.431373, 0.654902, 1, 1)
+
+[node name="SnowParticleWhite" type="CPUParticles2D" parent="Particles"]
+z_index = 2
+material = SubResource("CanvasItemMaterial_nsyh3")
+position = Vector2(328, 88)
+amount = 32
+lifetime = 3.0
+preprocess = 3.0
+emission_shape = 3
+emission_rect_extents = Vector2(1, 90)
+direction = Vector2(-1, 0)
+spread = 15.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+radial_accel_min = -15.0
+radial_accel_max = 15.0
+
+[node name="SnowParticleGray" type="CPUParticles2D" parent="Particles"]
+material = SubResource("CanvasItemMaterial_nsyh3")
+position = Vector2(328, 88)
+amount = 32
+lifetime = 5.0
+preprocess = 3.0
+emission_shape = 3
+emission_rect_extents = Vector2(1, 90)
+direction = Vector2(-1, 0)
+spread = 15.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 74.58
+radial_accel_min = -15.0
+radial_accel_max = 15.0
+color = Color(0.227451, 0.25098, 0.278431, 1)
