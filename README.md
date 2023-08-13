@@ -9,5 +9,4 @@
 5. Dash
 6. Hair
 ### Sources:
-- https://maddythorson.medium.com/celeste-and-towerfall-physics-d24bd2ae0fc5
 - https://maddythorson.medium.com/celeste-forgiveness-31e4a40399f1
