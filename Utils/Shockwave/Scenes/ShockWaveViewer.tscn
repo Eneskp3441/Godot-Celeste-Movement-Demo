@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cuhr52v1hwig4"]
 
-[ext_resource type="Script" path="res://ShockWave/ShockWave.gd" id="1_jhttk"]
+[ext_resource type="Script" path="res://Utils/ShockWave/Scripts/ShockWave.gd" id="1_jhttk"]
 
 [node name="ShockWaveViewer" type="Control" groups=["ShockWave"]]
 layout_mode = 3

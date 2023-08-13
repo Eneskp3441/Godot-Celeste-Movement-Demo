@@ -1,2 +1,0 @@
-PlatformerResource
-Resource

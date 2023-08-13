@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=3 uid="uid://d4dwg6ywaw7nb"]
+
+[ext_resource type="Script" path="res://Utils/SceneManager/SceneManager.gd" id="1_viyry"]
+[ext_resource type="Script" path="res://CelesteExample/Scripts/game_view.gd" id="2_exean"]
+[ext_resource type="Shader" path="res://addons/PixelPerfect2D/Materials/SmoothCam.gdshader" id="3_t4fcx"]
+[ext_resource type="Script" path="res://addons/PixelPerfect2D/Camera/PixelPerfectContainer.gd" id="4_e6v0t"]
+[ext_resource type="PackedScene" uid="uid://ps4iy5ms7qkp" path="res://CelesteExample/Scenes/game.tscn" id="5_dlajl"]
+[ext_resource type="PackedScene" uid="uid://cggqb75a8w8r" path="res://addons/debug_menu/debug_menu.tscn" id="6_pi2do"]
+[ext_resource type="Script" path="res://CelesteExample/Debug/DebugWrite.gd" id="7_y4b24"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_si8yf"]
+shader = ExtResource("3_t4fcx")
+shader_parameter/smoothing_factor = 1.0
+shader_parameter/cam_offset = Vector2(-4, 0)
+
+[node name="SceneManager" type="Node" node_paths=PackedStringArray("MainNodes", "GameView", "TransitionNode")]
+script = ExtResource("1_viyry")
+MainNodes = [NodePath("UI")]
+GameView = NodePath("GameView")
+TransitionNode = NodePath("Transition")
+
+[node name="GameView" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_exean")
+
+[node name="PixelPerfectContainer" type="SubViewportContainer" parent="GameView"]
+material = SubResource("ShaderMaterial_si8yf")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 4
+script = ExtResource("4_e6v0t")
+
+[node name="PixelPerfectViewport" type="SubViewport" parent="GameView/PixelPerfectContainer"]
+disable_3d = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(320, 180)
+render_target_update_mode = 4
+
+[node name="Game" parent="GameView/PixelPerfectContainer/PixelPerfectViewport" instance=ExtResource("5_dlajl")]
+
+[node name="CanvasLayer" parent="GameView" instance=ExtResource("6_pi2do")]
+visible = false
+
+[node name="CharacterPropertyList" type="CanvasLayer" parent="GameView"]
+visible = false
+follow_viewport_scale = 0.5
+
+[node name="MarginContainer" type="MarginContainer" parent="GameView/CharacterPropertyList"]
+offset_left = 18.0
+offset_top = 24.0
+offset_right = 229.0
+offset_bottom = 515.0
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("7_y4b24")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameView/CharacterPropertyList/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Transition" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0

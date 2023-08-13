@@ -1,22 +1,20 @@
 [gd_scene load_steps=6 format=3 uid="uid://nwgh4wx6wy5q"]
 
-[ext_resource type="Shader" path="res://Utils/Shockwave/Resources/ShockWave.gdshader" id="1_6lmjb"]
+[ext_resource type="Shader" path="res://Utils/ShockWave/Resources/ShockWave.gdshader" id="1_l03yx"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_y2w1h"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ey6kr"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xbtq6"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eser3"]
 resource_local_to_scene = true
-shader = ExtResource("1_6lmjb")
+shader = ExtResource("1_l03yx")
 shader_parameter/chromatic = 0.0
-shader_parameter/bgColor = Color(0.301961, 0.301961, 0.301961, 1)
-shader_parameter/shockWaves = SubResource("ViewportTexture_y2w1h")
+shader_parameter/shockWaves = SubResource("ViewportTexture_ey6kr")
 
-[sub_resource type="Gradient" id="Gradient_1ypyk"]
-offsets = PackedFloat32Array(0.407216, 1)
+[sub_resource type="Gradient" id="Gradient_2sjhn"]
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_whrwe"]
-gradient = SubResource("Gradient_1ypyk")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7woh3"]
+gradient = SubResource("Gradient_2sjhn")
 
 [node name="Viewer" type="Control"]
 z_index = 2
@@ -29,11 +27,20 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="SubViewport" type="SubViewport" parent="."]
-disable_3d = true
 size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="ApplySurface" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_xbtq6")
+material = SubResource("ShaderMaterial_eser3")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,4 +48,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = SubResource("GradientTexture1D_whrwe")
+texture = SubResource("GradientTexture1D_7woh3")

@@ -17,12 +17,12 @@ blend_mode = 1
 [node name="Game" type="Node2D"]
 
 [node name="CelesteBackgrounds" type="Sprite2D" parent="."]
-position = Vector2(160, 90)
+position = Vector2(161, 91)
 texture = ExtResource("1_ad5qr")
 
 [node name="CelesteTiles" type="Sprite2D" parent="."]
 z_index = 2
-position = Vector2(160, 90)
+position = Vector2(161, 91)
 texture = ExtResource("2_g8kpi")
 
 [node name="TileStaticCollision" type="StaticBody2D" parent="."]

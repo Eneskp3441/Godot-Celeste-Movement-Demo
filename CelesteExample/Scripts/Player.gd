@@ -6,7 +6,6 @@ extends CharacterControllerPlatformer
 @onready var dash_effects: SubViewport = $DashEffect/DashEffects
 @onready var dash_particle: CPUParticles2D = $DashParticle
 @onready var sub_viewport: SubViewport = $Hair/SubViewport
-@onready var dust_landed: CPUParticles2D = $DustLanded
 @onready var dash_effect = preload("res://CelesteExample/Scenes/dash_effect.tscn")
 @onready var hair: Line2D = $Hair/SubViewport/Hair
 @onready var hairbase: Sprite2D = $Hair/SubViewport/hairbase
