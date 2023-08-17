@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://3wleror1g5kh"]
 
-[ext_resource type="Script" path="res://Utils/ShockWave/Scripts/ShockWaveTrail.gd" id="1_6snbd"]
+[ext_resource type="Script" path="res://Utils/Shockwave/Scripts/ShockWaveTrail.gd" id="1_6snbd"]
 
 [node name="ShockWaveTrail" type="Line2D"]
 show_behind_parent = true

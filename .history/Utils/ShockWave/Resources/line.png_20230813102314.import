@@ -10,7 +10,7 @@ metadata={
 
 [deps]
 
-source_file="res://Utils/ShockWave/Resources/line.png"
+source_file="res://Utils/Shockwave/Resources/line.png"
 dest_files=["res://.godot/imported/line.png-f028db6021fe3945e4d75e2154d91cd5.ctex"]
 
 [params]

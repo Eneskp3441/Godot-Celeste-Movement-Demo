@@ -11,8 +11,8 @@ res://Utils/ShockWave/Resources/defaultTrailGradient.tres::6a365abf78b0696d23018
 res://Utils/ShockWave/Scenes/ShockWaveViewComp.tscn::06772350ad905d5441875e3aac1e07bd::1691912721::res://.godot/exported/133200997/export-f88f6c1736764f68a36575b6003a6f70-ShockWaveViewComp.scn
 res://Utils/ShockWave/Scenes/ShockWaveViewer.tscn::d435e7669ec696fe39d2c69feff3e9a3::1691906512::res://.godot/exported/133200997/export-0625c149f456120b106459fb677ac57b-ShockWaveViewer.scn
 res://Utils/ShockWave/Scenes/shock_effect.tscn::42f94ab6e474b78df871d8a4f3bb3f35::1691588888::res://.godot/exported/133200997/export-b2b6fb82e721499da08799793adaee25-shock_effect.scn
-res://Utils/ShockWave/Resources/defaultTrailCurve.tres::d182fb6b08ad398d85a1292b3c0ab4d5::1678614680::res://.godot/exported/133200997/export-802903868a24a8f0091419065d9a3cb0-defaultTrailCurve.res
-res://Utils/ShockWave/Resources/defaultTrailGradient.tres::6a365abf78b0696d23018b8e499617e0::1691572191::res://.godot/exported/133200997/export-4f3c88d8a2765040624f3fcb3e224be8-defaultTrailGradient.res
-res://Utils/ShockWave/Scenes/ShockWaveViewComp.tscn::06772350ad905d5441875e3aac1e07bd::1691912721::res://.godot/exported/133200997/export-7b8fd14b4d1a121f3aa10e9d57c6fd7c-ShockWaveViewComp.scn
-res://Utils/ShockWave/Scenes/ShockWaveViewer.tscn::d435e7669ec696fe39d2c69feff3e9a3::1691906512::res://.godot/exported/133200997/export-7b139807f61c3b773facd9ba8400d709-ShockWaveViewer.scn
-res://Utils/ShockWave/Scenes/shock_effect.tscn::42f94ab6e474b78df871d8a4f3bb3f35::1691588888::res://.godot/exported/133200997/export-9437cb83e85e5e8fe406035c0d29125a-shock_effect.scn
+res://Utils/Shockwave/Resources/defaultTrailCurve.tres::d182fb6b08ad398d85a1292b3c0ab4d5::1678614680::res://.godot/exported/133200997/export-802903868a24a8f0091419065d9a3cb0-defaultTrailCurve.res
+res://Utils/Shockwave/Resources/defaultTrailGradient.tres::6a365abf78b0696d23018b8e499617e0::1691572191::res://.godot/exported/133200997/export-4f3c88d8a2765040624f3fcb3e224be8-defaultTrailGradient.res
+res://Utils/Shockwave/Scenes/ShockWaveViewComp.tscn::06772350ad905d5441875e3aac1e07bd::1691912721::res://.godot/exported/133200997/export-7b8fd14b4d1a121f3aa10e9d57c6fd7c-ShockWaveViewComp.scn
+res://Utils/Shockwave/Scenes/ShockWaveViewer.tscn::d435e7669ec696fe39d2c69feff3e9a3::1691906512::res://.godot/exported/133200997/export-7b139807f61c3b773facd9ba8400d709-ShockWaveViewer.scn
+res://Utils/Shockwave/Scenes/shock_effect.tscn::42f94ab6e474b78df871d8a4f3bb3f35::1691588888::res://.godot/exported/133200997/export-9437cb83e85e5e8fe406035c0d29125a-shock_effect.scn

@@ -1,5 +1,2 @@
-res://Utils/ShockWave/Scenes/ShockWaveViewComp.tscn
-res://Utils/ShockWave/Resources/ShockWave.gdshader
-res://Utils/Shockwave/Resources/ShockWave.gdshader
 res://CelesteExample/Scenes/game_view.tscn
-res://CelesteExample/Scenes/game.tscn
+res://Utils/ShockWave/Scenes/ShockWaveViewComp.tscn

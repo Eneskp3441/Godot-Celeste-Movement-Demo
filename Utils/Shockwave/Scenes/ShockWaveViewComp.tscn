@@ -17,7 +17,6 @@ shader_parameter/shockWaves = SubResource("ViewportTexture_ey6kr")
 gradient = SubResource("Gradient_2sjhn")
 
 [node name="Viewer" type="Control"]
-z_index = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

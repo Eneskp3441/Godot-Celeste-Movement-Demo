@@ -2,9 +2,9 @@ class_name ShockWave
 extends Control
 
 
-@onready var shockViewer:PackedScene = load("res://Utils/ShockWave/Scenes/ShockWaveViewComp.tscn")
-@onready var shockEffect:PackedScene = load("res://Utils/ShockWave/Scenes/shock_effect.tscn")
-@onready var shockTrail:PackedScene = load("res://Utils/ShockWave/Scenes/shock_wave_trail.tscn")
+@onready var shockViewer:PackedScene = load("res://Utils/Shockwave/Scenes/ShockWaveViewComp.tscn")
+@onready var shockEffect:PackedScene = load("res://Utils/Shockwave/Scenes/shock_effect.tscn")
+@onready var shockTrail:PackedScene = load("res://Utils/Shockwave/Scenes/shock_wave_trail.tscn")
 var view:Control = null
 var shockView:SubViewport = null
 func _ready() -> void:

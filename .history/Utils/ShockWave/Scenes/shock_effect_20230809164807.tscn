@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c01ncip5ythkt"]
+
+[ext_resource type="Texture2D" uid="uid://yssowi04y6m3" path="res://Utils/Shockwave/Resources/pattern.png" id="1_pku4h"]
+[ext_resource type="Script" path="res://Utils/Shockwave/Scripts/ShockEffect.gd" id="2_d0kmi"]
+
+[node name="ShockEffect" type="Sprite2D"]
+position = Vector2(640, 360)
+texture = ExtResource("1_pku4h")
+script = ExtResource("2_d0kmi")
